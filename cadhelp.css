@@ -1,0 +1,13 @@
+p {
+   text-indent:2em;
+   text-align: justify;
+   text-align-last: left;
+   font-family:Calibri,Tahoma,Helvetica,Sans;
+   font-size:12pt;
+   width:1023px
+}
+
+.dirs {
+   font-size:16pt;
+   font-weight:bold 
+}

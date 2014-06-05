@@ -1,0 +1,14 @@
+syntax: glob
+*.sln
+*.sdf
+*.suo
+*.htm
+Upgrade*
+*.ncb
+*.vc*
+*.exe
+*.pdb
+*.lib
+syntax: regexp
+.*Release.*
+.*Debug.*
