@@ -1,0 +1,56 @@
+A trivial engine for a small team knowledgebase hosting.
+
+# Use case
+
+This software is written for a rare case where the following conditions were met:
+* Windows-based, resource-scarce setup
+* A bunch of users with little-to-nothing knowledge of a software
+* There will be no person with IT skill on site in foreseeable future.
+
+If you have a person capable of installing and supporting any wiki of CMS engine, use whatever they can, not this PoS.
+
+# Prerequisites
+
+Micrsoft IIS with CGI module.
+
+Compiler: Microsoft Visual Studio 2005 or newer.
+
+# Installation
+
+1. Put `cadhelp.css` into the root directory of your web-server. (Usially, `c:\inetpub\wwwroot`).
+2. In the IIS Manager select the root folder for your knowledgebase site. 
+3. Open the 'Handle Mappings' section
+4. Add hander for directory structure: 
+  * Path: part.idx
+  * Module: CGI Module
+  * Executable: C:\path\to\dirhelp.exe
+  * Name: DirCGI
+5. Add handler for text files:
+  * Path: *.txt
+  * Module: CGI Module
+  * Executable: C:\path\to\txthelp.exe
+  * Name: TxtCGI
+6. Open 'Default document' section and add `part.idx` as a default document.
+
+# Markup and structure
+
+Any page is represented by a directory. There are two type of pages: an article and a catalogue. 
+
+A catalogue page is defined by the file `part.idx` in it. This file contains title and description for the page. Under the descriprion a catalogue page has a list of subcutalogues followed by a list of articles. Physically, both are just subdirectories.
+
+An artice page is defined by a text file in it with the same name as the directory. The file usially contains text, images and links. All this images are usially placed in the same directory.
+
+Both part.idx and *.txt file share the same features. The first line is a title. It's used as a title for a page, a header in a pager and as a representation in a directory.
+
+Use single curly brases to include an image in your text, for example, {pic1-1.jpg}. The form {pic1-1} is also accepted, jpg extention will be assumed.
+
+Use doule curly brases to make a link in a full form: {{link address}link text}, or in a short form: {{link address}}.
+
+Place '-' as a first character in a line to make some kind of a list;
+
+# License
+
+cadhelp is licensed under the terms of the WTFPL license:
+  
+      http://www.wtfpl.net/txt/copying
+      (or the COPYING file in the sources)
